@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Delete - {{ santier }} {% endblock %}
+
+{% block content %}
+    <div class = 'container-fluid'>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class = "card">
+                    <div class="card-header">
+                        <h3 class="text-center">Sterge: {{ santier }}</h3>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <h4 class="text-center"> Esti sigur ca vrei sa-l setrgi?</h4>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-outline-success">Sterge</button>
+                            <a href="{% url 'ls_diriginte' %}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} Adauga santier {% endblock %}
+
+{% block content %}
+    <br><br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header" style=" color: #29608a ">
+                        <h3 class="text-center"> Planifica un santier </h3>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %} {# csrf- cross site request forgery #}
+                        <div class="card-body" style="background-color: #d5e8ed;">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-outline-success">Salveaza</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

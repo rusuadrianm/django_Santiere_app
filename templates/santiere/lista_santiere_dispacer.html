@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %} Lista Santiere Dispecer{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+            <br>
+
+                <table class="table table-striped table-bordered" style="background-color: #F4F3EA">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Tip Santier</th>
+                            <th>Localitate</th>
+                            <th>Strada</th>
+                            <th>Numar</th>
+                            <th>Tip lucrari</th>
+                            <th>Constructor</th>
+                            <th>Cod Proiect</th>
+                            <th>Actiuni dispecer</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    {% for santier in santiere_fara_diriginte %}
+                        {% if not santier.diriginte %}
+                        <tr>
+                            <td>{{ santier.data|date:'d-m-Y' }}</td>
+                            <td>{{ santier.tip_santier }}</td>
+                            <td style="font-weight: bolder; color: darkblue">{{ santier.localitate }}</td>
+                            <td>{{ santier.strada }}</td>
+                            <td>{{ santier.numar }}</td>
+                            <td>{{ santier.tip_lucrari }}</td>
+                            <td>{{ santier.constructor }}</td>
+                            <td>{{ santier.SDA }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                     Actiuni
+                                    </a>
+
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'update_santier_dispacer' santier.id %}">Desemneaza diriginte</a></li>
+                                        <li><a class="dropdown-item" href="#">Schimba data</a></li>
+                                        <li><a class="dropdown-item" href="#">Sterge</a></li>
+                                        <li>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

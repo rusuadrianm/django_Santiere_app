@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} Lista Santiere {% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                <form method="GET" >
+                    {{ form.as_p }}
+                    <input type ='submit' value="Submit" class="btn btn-primary"/>
+                </form>
+            </div>
+        </div>
+        </hr>
+        <div class="row">
+            <div class="col-md-12">
+            <br>
+                <table class="table table-info table-striped table-bordered">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Data</th>
+                            <th>Tip Santier</th>
+                            <th>Localitate</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for santier in santiere %}
+                        <tr>
+                            <td>{{ santier.data|date:'d-m-Y' }}</td>
+                            <td>{{ santier.tip_santier }}</td>
+                            <td>{{ santier.localitate }}</td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

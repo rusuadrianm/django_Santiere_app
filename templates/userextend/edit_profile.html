@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} edit Profile {% endblock %}
+
+{% block content %}
+    <br><br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center" style="color: #333D51"> Editeaza profil : {{ my_user.first_name }} {{ my_user.last_name }}</h3>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="card-body" style="background-color: #F4F3EA">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-outline-success">Update</button>
+                            <a href="{% url 'homepage' %}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

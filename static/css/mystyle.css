@@ -1,0 +1,37 @@
+#signin_btn {
+    color: blue;
+    margin-right: 5px;
+}
+
+.nav-link {
+            background-color: #CBD0D8;
+            color: #333D51;
+        }
+.card-header{
+            background-color:#CBD0D8 ;
+        }
+.card-footer{
+            background-color:#CBD0D8 ;
+        }
+
+.centered {
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 30%;
+}
+
+.date_santier {
+    font-weight: bolder;
+}
+
+.titlu_hp{
+    color: #333D51;
+    font-family: 'Calibri', sans-serif;
+    font-weight: bolder;
+}
+
+#email_diriginte {
+    color: #333D51;
+    font-weight: lighter;
+}
+

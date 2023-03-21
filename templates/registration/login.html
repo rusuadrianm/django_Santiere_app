@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+    <br><br><br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center" style="color: #333D51" >Log in</h3>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="card-body" style="background-color: #F4F3EA">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="card-footer text-center" style="background-color: #CBD0D8">
+                            <button type="submit" class="btn btn-outline-success">Log in</button>
+                            <a href="#" class="btn btn-outline-danger">Reset password</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
