@@ -79,3 +79,5 @@ def filter_santiere(request):
                 'santiere': filter_santier.qs
                 }
     return render(request, 'santiere/lista_filtrata.html', context)
+
+#comit 3
