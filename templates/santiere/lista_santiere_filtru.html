@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %} Lista Santiere Filtru {% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-left">Filtru</h4>
+                    </div>
+                    <form method="GET">
+                        <div class="card-body">
+                            {{ filters_form.as_p }}
+                        </div>
+                        <div class="card-footer text-right">
+                            <button type="submit" value="submit" class="btn btn-outline-succes">Cauta</button>
+                            <a href="{% url 'lista_santiere_filtru' %}" class='btn btn-outline-danger'>Reset</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        </hr>
+
+        <div class="row">
+            <div class="col-md-12">
+            <br>
+            {% if all_santiere %}
+                <table class="table table-info table-striped table-bordered">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Data</th>
+                            <th>Tip Santier</th>
+                            <th>Localitate</th>
+                            <th>Strada</th>
+                            <th>Numar</th>
+                            <th>Tip lucrari</th>
+                            <th>Constructor</th>
+                            <th>Cod Proiect</th>
+                            <th class="table-succes">Diriginte</th>
+                            <th>Numar aparitie</th>
+                            <th>Status</th>
+                            <th>Poze</th>
+                            <th>Docs</th>
+                            <th>Observatie</th>
+                            <th>Nota</th>
+                            <th>Detalii</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for santier in all_santiere %}
+                        <tr>
+                            <td>{{ santier.data|date:'d-m-Y' }}</td>
+                            <td>{{ santier.tip_santier }}</td>
+                            <td>{{ santier.localitate }}</td>
+                            <td>{{ santier.strada }}</td>
+                            <td>{{ santier.numar }}</td>
+                            <td>{{ santier.tip_lucrari }}</td>
+                            <td>{{ santier.constructor }}</td>
+                            <td>{{ santier.SDA }}</td>
+                            <td style="font-weight: bolder">
+                                {%  if santier.diriginte %}
+                                    {{ santier.diriginte }}
+                                {% else %}
+                                    --
+                                {% endif %}
+                            </td>
+                            <td>{{ santier.numar_aparitie }}</td>
+                            <td style="font-weight: bolder; color: darkred">
+                                {%  if santier.status %}
+                                {{ santier.status }}
+                                {% else %}
+                                --
+                                {% endif %}
+                            </td>
+                            <td>
+                                {%  if santier.poza1 or santier.poza2 or santier.poza3 %}
+                                    DA
+                                {% else %}
+                                    --
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if santier.document %}
+                                    DA
+                                {% else %}
+                                    --
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if santier.observatie %}
+                                    Are obs.
+                                {% else %}
+                                    --
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if santier.nota %}
+                                    {{ santier.nota }}
+                                {% else %}
+                                    --
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a class="btn btn-secondary btn-sm"
+                                   href="#">
+                                   Vezi
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+            <div>
+                <msg>Niciun Santier</msg>
+            </div>
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 
+from diriginti.models import Diriginte
+from santiere.filters import SantierFilter
 from santiere.forms import SantierForm1, UpdateSantierFormDispacer, UpdateSantierFormDiriginte1, SantierFilterForm
 from santiere.models import Santier
 
@@ -21,6 +23,26 @@ class SantiereListView(ListView):
     model = Santier
     context_object_name = 'all_santiere'
 
+
+class SantiereListViewFilter(ListView):
+    template_name = 'santiere/lista_santiere_filtru.html'
+    model = Santier
+    context_object_name = 'all_santiere'
+
+    def get_queryset(self):
+        return Santier.objects.all()
+
+    def get_context_data(self, **kwargs):
+        data = super(SantiereListViewFilter, self).get_context_data(**kwargs)
+        diriginti = Diriginte.objects.all()
+        data['get_all_diriginti'] = diriginti
+
+        santiere = Santier.objects.all()
+        filters = SantierFilter(self.request.GET, queryset=santiere)
+        data['all_santiere'] = filters.qs
+        data['filters_form'] = filters.form
+
+        return data
 
 class SantiereListView_Dispacer(ListView):
     template_name = 'santiere/lista_santiere_dispacer.html'
