@@ -21,6 +21,11 @@ class SantierForm1(forms.ModelForm):
             'SDA': TextInput(attrs={'class': 'form-control', 'placeholder': 'cod proiect de tip ##-##-##/0000'}),
         }
 
+    def __init__(self, *args, **kwargs):
+        super(SantierForm1, self).__init__(*args, **kwargs)
+        self.fields['diriginte'].required = False
+
+
 
 ### FORMULAR PENTRU UPDATE SANTIER - Dispacer- ###
 class UpdateSantierFormDispacer(forms.ModelForm):
@@ -46,7 +51,7 @@ class UpdateSantierFormDispacer(forms.ModelForm):
 class UpdateSantierFormDiriginte1(forms.ModelForm):
     class Meta:
         model = Santier
-        fields = ['status', 'observatie', 'poza1', 'poza2', 'poza3', 'document']
+        fields = ['status', 'observatie', 'poza1', 'poza2', 'poza3', 'document', 'vizita']
 
         widgets = {
 
@@ -55,7 +60,8 @@ class UpdateSantierFormDiriginte1(forms.ModelForm):
             'poza1': FileInput(attrs={'class': 'form-control'}),
             'poza2': FileInput(attrs={'class': 'form-control'}),
             'poza3': FileInput(attrs={'class': 'form-control'}),
-            'document': FileInput(attrs={'class': 'form-control'})
+            'document': FileInput(attrs={'class': 'form-control'}),
+            'vizita': FileInput(attrs={'class': 'form-control'})
         }
 
     def __init__(self, *args, **kwargs):
@@ -65,12 +71,9 @@ class UpdateSantierFormDiriginte1(forms.ModelForm):
         self.fields['poza2'].required = False
         self.fields['poza3'].required = False
         self.fields['document'].required = False
+        self.fields['vizita'].required = False
 
 
-class SantierFilterForm(django_filters.FilterSet):
-    class Meta:
-        model = Santier
-        fields = ['diriginte']
 
 
 

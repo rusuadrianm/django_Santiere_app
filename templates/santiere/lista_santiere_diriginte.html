@@ -36,7 +36,7 @@
                             <td>{{ santier.SDA }}</td>
                             <td>{{ santier.diriginte }}</td>
                             <td>
-                            {% if not santier.status %}
+                            {% if santier.status == '--' %}
                                 <div >
                                     <a class="btn btn-secondary btn-sm"
                                        href="{% url 'update1_santier_diriginte' santier.id %}" role="button"  aria-expanded="false">
