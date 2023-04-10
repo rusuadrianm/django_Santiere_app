@@ -3,6 +3,31 @@
 {% block title %} Lista Santiere Dispecer{% endblock %}
 
 {% block content %}
+     <style>
+        #container_santiere {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+        }
+        #container_santiere div {
+            align-items: center;
+            background-color: #333D51;
+            margin: 20px;
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+
+
+    <div class="container-fluid" id="container_santiere">
+    <Br>
+
+        <div class="row justify-content-around">
+            <a href="#" class="btn btn-outline-light" role="button"  style="width: 20rem">Santiere zile anterioare</a>
+            <a href="#" class="btn btn-outline-light" role="button"  style="width: 20rem">Santiere Curente</a>
+            <a href="#" class="btn btn-outline-secondary" role="button" data-bs-toggle="button" style="width: 20rem">Lista Santiere </a>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
